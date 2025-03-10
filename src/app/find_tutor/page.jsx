@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 function page() {
 
     const [input, setInput] = useState('')
-  
+
 
 
     return (

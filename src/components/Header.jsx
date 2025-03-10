@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from "next/navigation";
 
 import Avatar from '@mui/material/Avatar';
 
@@ -19,6 +20,8 @@ import Notification from './Notification';
 
 
 function Header() {
+    const pathname = usePathname();
+
     return (
         <nav className=' h-[80px] w-full  flex border-b-1 border-gray-200 '>
 
@@ -37,19 +40,19 @@ function Header() {
                 <ul className='w-[400px] h-full flex items-center  justify-between px-2'>
                     <li className="relative font-[400] h-full flex items-center before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[3px] before:bg-orange-500 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100">
 
-                        <Link href="/" className="text-[16px] font-sans cursor-pointer hover:text-[#0170B9] font-[500]">
+                        <Link href="/" className={` ${pathname === '/' ? "text-blue-500 font-bold" : "text-gray-700"} text-[16px] font-sans cursor-pointer hover:text-[#0170B9] `}>
                             HOME
                         </Link>
                     </li>
 
 
                     <li className="relative h-full flex items-center before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[3px] before:bg-orange-500 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100">
-                        <Link href="/find_student" className='text-[16px] font-[500] font-sans hover:text-[#0170B9]'>
+                        <Link href="/find_student" className={` ${pathname === '/find_student' ? "text-blue-500 font-bold" : "text-gray-700"} text-[16px] font-sans cursor-pointer hover:text-[#0170B9] `}>
                             FIND STUDENT
                         </Link>
                     </li>
                     <li className="relative h-full flex items-center before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[3px] before:bg-orange-500 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100">
-                        <Link href="#" className='font-[500] text-[16px] font-sans hover:text-[#0170B9]'>FIND TUTOR</Link>
+                        <Link href="/find_tutor" className={` ${pathname === '/find_tutor' ? "text-blue-500 font-bold" : "text-gray-700"} text-[16px] font-sans cursor-pointer hover:text-[#0170B9] `}>FIND TUTOR</Link>
                     </li>
                 </ul>
             </div>
