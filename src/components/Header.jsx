@@ -13,9 +13,27 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 
+import { List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
+import CallIcon from "@mui/icons-material/Call";
+import SchoolIcon from "@mui/icons-material/School";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
+
+
+
 //component
 import Notification from './Notification';
 
+
+
+const menuItems = [
+    { text: "Personal details", icon: <PersonIcon /> },
+    { text: "Contact details", icon: <CallIcon /> },
+    { text: "Education", icon: <SchoolIcon /> },
+    { text: "Subjects I can teach", icon: <MenuBookIcon /> },
+    { text: "Media gallery", icon: <PhotoLibraryIcon /> },
+];
 
 
 
@@ -60,12 +78,22 @@ function Header() {
             {/* icons  */}
             <div className=' w-[100px] h-[100%] flex  flex-col items-center px-2'>
                 <ul className='w-full h-full flex   items-center justify-evenly'>
-                    <li>
+                    <li className='flex flex-col relative'>
                         <Link href="#">
                             <Avatar alt="Travis Howard" src="/imgs/login.png" />
                         </Link>
+
+                        <List>
+                            {menuItems.map((item, index) => (
+                                <ListItemButton key={index}>
+                                    <ListItemIcon>{item.icon}</ListItemIcon>
+                                    <ListItemText primary={item.text} />
+                                </ListItemButton>
+                            ))}
+                        </List>
                     </li>
                 </ul>
+
             </div>
         </nav>
     )
