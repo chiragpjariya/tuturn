@@ -5,29 +5,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Avatar from '@mui/material/Avatar';
-import Badge from '@mui/material/Badge';
-import Tooltip from '@mui/material/Tooltip';
 
 
 //icons
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
-import { styled } from '@mui/material';
 
-const CustomTooltip = styled(Tooltip)(({ theme, bgColor }) => ({
-    [`& .MuiTooltip-tooltip`]: {
-        backgroundColor: bgColor || "orange", 
-        color: "white",
-        fontSize: "10px",
-        textAlign: "center",
-        borderRadius: "30px",
-        padding: theme.spacing(1, 1),
-    },
-    [`& .MuiTooltip-arrow`]: {
-        color: bgColor || "orange",
-    },
-}));
+//component
+import Notification from './Notification';
+
 
 
 
@@ -36,27 +23,37 @@ function Header() {
         <nav className=' h-[80px] w-full  flex border-b-1 border-gray-200 '>
 
             {/* brand */}
-            <div className='h-[80px] w-[120px] ml-[12px] flex items-center'>
+            <div className='h-full w-[120px] ml-[19px] flex items-center'>
                 <Image
                     src="/imgs/logo.png"
                     alt="logo"
-                    width={500}
-                    height={300}
+                    width={600}
+                    height={400}
                 />
             </div>
 
             {/* nav-manu */}
             <div className='w-[80%] h-[80px]  flex justify-end'>
                 <ul className='w-[500px] h-full flex items-center  justify-between px-2'>
-                    <li className="relative h-full flex items-center before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[3px] before:bg-orange-500 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100">
-                        <CustomTooltip title="New" arrow placement="top-end" bgColor="orange" open >
-                            <Link href="#" className="text-[16px] font-sans">Online classes</Link>
-                        </CustomTooltip>
+                    <li className="relative font-[400] h-full flex items-center before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[3px] before:bg-orange-500 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100">
+
+                        <Link href="#" className="text-[16px] font-sans ">
+                            <div className='flex flex-col relative'>
+                                <Notification text="NEW" color="white" bgColor="orange" classes="  rounded-[10px_10px_0px_10px] px-2 py-[1px] absolute h-[18px] w-[40px] bottom-6 font-[700] left-[56px] text-[10px] flex items-center justify-center font-medium" />
+                                Online classes
+                            </div>
+
+                        </Link>
                     </li>
 
 
                     <li className="relative h-full flex items-center before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[3px] before:bg-orange-500 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100">
-                        <Link href="#" className='text-[16px] font-sans'>Learning material</Link>
+                        <Link href="#" className='text-[16px] font-sans'>
+                            <div className='flex flex-col relative'>
+                                <Notification text="FREE" color="white" bgColor="green" classes=" rounded-[10px_10px_0px_10px] px-2 py-[1px] absolute h-[18px] w-[40px] bottom-6 font-[700] left-[80px] text-[10px] flex items-center justify-center font-medium" />
+                                Learning material
+                            </div>
+                        </Link>
                     </li>
                     <li className="relative h-full flex items-center before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[3px] before:bg-orange-500 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100">
                         <Link href="#" className='text-[16px] font-sans'>Success stories</Link>
@@ -75,17 +72,20 @@ function Header() {
                 <ul className='w-full h-full flex   items-center justify-evenly'>
                     <li>
 
-                        <Link href="#">
-                            <Badge badgeContent={4} color="error" >
+                        <Link href="#" >
+                            <div className='flex flex-col relative'>
+                                <Notification text={4} color="white" bgColor="red" classes="text-[0.8rem] text-white rounded-full absolute h-[22px] w-[22px] bottom-3 left-4 z-20 flex items-center justify-center font-medium" />
                                 <ChatBubbleOutlineOutlinedIcon sx={{ fontSize: 25 }} />
-                            </Badge>
+                            </div>
+
                         </Link>
                     </li>
                     <li>
                         <Link href="#">
-                            <Badge badgeContent={3} color="error">
+                            <div className='flex flex-col relative'>
+                                <Notification text={3} color="white" bgColor="red" classes="text-[0.8rem] text-white rounded-full absolute h-[22px] w-[22px] bottom-3 left-3 z-20 flex items-center justify-center font-medium" />
                                 <NotificationsNoneOutlinedIcon sx={{ fontSize: 26 }} />
-                            </Badge>
+                            </div>
                         </Link>
                     </li>
                     <li>
